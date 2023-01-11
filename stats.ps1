@@ -57,6 +57,5 @@ switch ($choix) {
     # Choix Incorrect
     default {
         Write-Host "Votre choix est incorrect. Veuillez réessayer."
-    }
-    
+    }  
 }

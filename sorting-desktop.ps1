@@ -46,6 +46,5 @@ foreach ($item in $files) {
         New-Item -ItemType Directory -Path $desktop -Name "Autres" -ErrorAction Ignore
         # Déplace les autres fichiers dans un dossier autres
         Move-Item -Path $item.FullName -Destination "$desktop/Autres"
-        }
-        
+        }    
 }

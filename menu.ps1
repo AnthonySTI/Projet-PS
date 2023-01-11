@@ -45,8 +45,7 @@ $options = @(
         # Choix incorrect
         default {
             Write-Host "Votre choix est incorrect. Veuillez réessayer."
-        }
-        
+        } 
     }
 
     
