@@ -48,3 +48,4 @@ foreach ($item in $files) {
         Move-Item -Path $item.FullName -Destination "$desktop/Autres"
         }    
 }
+
