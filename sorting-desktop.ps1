@@ -1,3 +1,11 @@
+<#
+.SYNOPSIS
+Gestion automatique des fichiers présents sur le bureau
+
+.DESCRIPTION
+Le script permet de trier les fichiers en dossiers en fonction de leur extension
+#>
+
 # Indiquer dans la variable $desktop le chemin du bureau
 $desktop = "C:\Users\$env:username\Desktop"
 
@@ -10,6 +18,7 @@ $excel = @('xlsx')
 $files = Get-ChildItem -Path $desktop
 
 foreach ($item in $files) {
+    
     # Vérifier si l'extension du fichier est contenue dans $word
     if ($word.Contains($item.Extension.TrimStart('.'))) {
         # Crée le chemin "Documents/Microsoft Office/Word" s'il n'existe pas déjà
@@ -17,6 +26,7 @@ foreach ($item in $files) {
         # Déplace le fichier dans le dossier Word
         Move-Item -Path $item.FullName -Destination "$desktop\Documents\Microsoft Office\Word"
     }
+
     # Vérifier si l'extension du fichier est contenue dans $powerpoint
     elseif ($powerpoint.Contains($item.Extension.TrimStart('.'))) {
         # Crée le chemin "Documents/Microsoft Office/Powerpoint" s'il n'existe pas déjà
@@ -24,6 +34,7 @@ foreach ($item in $files) {
         # Déplace le fichier dans le dossier Powerpoint
         Move-Item -Path $item.FullName -Destination "$desktop\Documents\Microsoft Office\Powerpoint"
     }
+
     # Vérifier si l'extension du fichier est contenue dans $excel
     elseif ($excel.Contains($item.Extension.TrimStart('.'))) {
         # Crée le chemin "Documents/Microsoft Office/Excel" s'il n'existe pas déjà

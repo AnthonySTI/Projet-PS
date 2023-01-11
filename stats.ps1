@@ -1,3 +1,12 @@
+<#
+.SYNOPSIS
+Créer une statistique d'un dossier
+
+.DESCRIPTION
+Le script pour afficher les statistiques d'un répertoire est capable d'afficher les fichiers d'un dossier,
+de compter le nombre de fichiers présents dans un dossier et d'afficher la taille d'un répertoire en giga-octets. 
+#>
+
 # Demande à l'utilisateur le chemin du dossier à analyser
 $path = Read-Host "Entre le chemin complet du dossier que tu souhaites analyser "
 
@@ -5,7 +14,7 @@ $path = Read-Host "Entre le chemin complet du dossier que tu souhaites analyser 
 $options = @(
     "Afficher les éléments du dossier",
     "Afficher le nombre d'éléments présents dans le dossier",
-    "Afficher la taille du dossier en octets",
+    "Afficher la taille du dossier en GO",
     "Quitter"
 )
 
@@ -28,15 +37,15 @@ switch ($choix) {
     # Option 2
     2 {
         # Appelle la commande associée à ce choix
-        (Get-ChildItem -Path $path).Count
+        $nombre = (Get-ChildItem -Path $path).Count
+        Write-Host $nombre "fichiers / dossiers"
     }
     # Option 3
     3 {
         # Appelle la commande associée à ce choix
         $tailleEnOctets = (Get-ChildItem -Path $path -Recurse | Measure-Object -Property Length -Sum).Sum
-        $tailleEnGigaOctets = [math]::Round($tailleEnOctets / 1000000000, 2)
+        $tailleEnGigaOctets = [math]::Round($tailleEnOctets / 1gb, 2)
         Write-Host $tailleEnGigaOctets "Go"
-
     }
     # Quitter
     4 {
