@@ -7,7 +7,7 @@ Le script pour afficher les statistiques d'un répertoire est capable d'afficher
 de compter le nombre de fichiers présents dans un dossier et d'afficher la taille d'un répertoire en giga-octets. 
 #>
 
-# Chargement des classe l'interface GUI
+# Chargement des classes l'interface GUI
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 
