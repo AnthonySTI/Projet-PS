@@ -14,6 +14,9 @@ $options = @(
     "Créer une statistique d'un dossier",
     "Quitter"
 )
+
+# Boucles jusqu'à ce que l'utilisateur choisi l'option quitter
+while ($choix -ne $options.Count) {
     # Afficher le menu
     Write-Host "Choisissez une option :" 
     for ($i = 0; $i -lt $options.Count; $i++) {
@@ -37,7 +40,7 @@ $options = @(
         }
         # Quitter
         3 {
-            if ($choix -eq 3) {
+            if ($choix -eq $options.Count) {
                 Write-Host "Le programme a été fermé."
                 Exit
             }
@@ -47,4 +50,8 @@ $options = @(
             Write-Host "Votre choix est incorrect. Veuillez réessayer."
         } 
     }
+}
  
+# J'ai enlevé la boucle pour afficher les options de menu, car elle était se répétait avec la boucle principale. 
+# J'ai également changé la condition de sortie pour quitter le menu lorsque l'utilisateur sélectionne l'option "Quitter". 
+# J'ai aussi changé le numero du choix pour quitter pour correspondre à l'index de l'option "Quitter" dans le tableau d'options.
