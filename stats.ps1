@@ -22,6 +22,7 @@ $options = @(
     "Afficher les éléments du dossier",
     "Afficher le nombre d'éléments présents dans le dossier",
     "Afficher la taille du dossier en GO",
+    "Afficher le nombre de fichiers dans le dossier",
     "Quitter"
 )
 
@@ -54,9 +55,17 @@ switch ($choix) {
         $tailleEnGigaOctets = [math]::Round($tailleEnOctets / 1gb, 2)
         Write-Host $tailleEnGigaOctets "Go"
     }
+    #Option 4
+    4{
+        # Affiche le nombre de fichiers
+        $NbFichiers = (Get-ChildItem -Path $path -Recurse | Where-Object { !$_.PSIsContainer }).Count
+
+        $NbFichiers = [math]::Round($NbFichiers / 1, 2)
+        Write-Host $NbFichiers "fichiers"
+    }
     # Quitter
-    4 {
-        if ($choix -eq 4) {
+    5 {
+        if ($choix -eq 5) {
             Write-Host "Le programme a été fermé."
             Exit
         }
