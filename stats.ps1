@@ -7,8 +7,15 @@ Le script pour afficher les statistiques d'un répertoire est capable d'afficher
 de compter le nombre de fichiers présents dans un dossier et d'afficher la taille d'un répertoire en giga-octets. 
 #>
 
+# Chargement des classe l'interface GUI
+Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName System.Drawing
+
+
 # Demande à l'utilisateur le chemin du dossier à analyser
-$path = Read-Host "Entre le chemin complet du dossier que tu souhaites analyser "
+$FolderPath = New-Object System.Windows.Forms.FolderBrowserDialog #Création du dialogue pour la séléction du chemin
+$FolderPath.ShowDialog() # Affiche la page de dialogue pour la séléction du chemin
+$FolderPath.SelectedPath = $path
 
 # Options du menu
 $options = @(
